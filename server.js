@@ -16,7 +16,7 @@ const routes = {
       component: IndexComponent
     }
   ]
-}
+};
 
 const app = express();
 
@@ -36,10 +36,14 @@ app.get('*', (req, res) => {
     } else if (props) {
       // if we got props, that means we found a valid component to render
       // for the given route
-      const markup = renderToString(<RoutingContext {...props} />);
+      /* jshint ignore:start */
+      const markup = renderToString(
+        <RoutingContext {...props} />
+      );
+      /* jshint ignore:end */
 
       // render `index.ejs`, but pass in the markup we want it to display
-      res.render('index', { markup })
+      res.render('index', { markup });
 
     } else {
       // no route match, so 404. In a real app you might render a custom
